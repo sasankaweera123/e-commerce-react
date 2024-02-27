@@ -1,0 +1,12 @@
+.not-found{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-banner{
+    margin-top: 3.2rem;
+    width: 100%;
+    overflow: hidden;
+}
