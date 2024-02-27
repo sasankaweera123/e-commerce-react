@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { ResourcePath } from "../../constants/ResourcePath";
 import Product from "../../components/Product/Product";
 import "../pages.css";
+
 
 function ShopPage() {
 

@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
 import './NavBar.css';
 import {ResourcePath} from "../../constants/ResourcePath";
+import {ShopContext} from "../../context/ShopContext";
 
 function NavBar() {
+
+    const {getCartItemsCount} = useContext(ShopContext);
 
     return (
         <Navbar bg="dark" data-bs-theme="dark" collapseOnSelect fixed="top">
@@ -17,7 +20,7 @@ function NavBar() {
                 <Nav>
                     <Nav.Link href={ResourcePath.CART}><span
                         className="material-symbols-outlined">shopping_cart</span></Nav.Link>
-                        <p>0</p>
+                        <p>{getCartItemsCount()}</p>
                 </Nav>
                 <button className="btn btn-primary">Sign In</button>
             </Container>
