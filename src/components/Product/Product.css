@@ -1,0 +1,11 @@
+.card-box-card{
+    width: 18rem;
+    height: 30rem;
+    margin:2rem;
+}
+
+.card-box-image{
+    width: 10rem;
+    max-height: 12rem;
+    margin: 2rem;
+}
