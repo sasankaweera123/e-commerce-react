@@ -1,0 +1,17 @@
+.cart-item p, .cart-items-topic p{
+    color: black;
+}
+
+.cart-item td{
+    vertical-align: middle;
+}
+
+.cart-item img{
+    width: 5rem;
+    max-height: 6rem;
+    margin: 2rem;
+}
+
+.cart-total{
+    width: 50%;
+}

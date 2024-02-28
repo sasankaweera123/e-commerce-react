@@ -7,6 +7,7 @@ const Home = lazy(() => import("../pages/HomePage/HomePage.js"));
 const Shop = lazy(() => import("../pages/ShopPage/ShopPage.js"));
 const ContactUs = lazy(() => import("../pages/ContactUsPage/ContactUsPage.js"));
 const Cart = lazy(() => import("../pages/CartPage/CartPage.js"));
+const Product = lazy(() => import("../pages/ProductPage/ProductPage.js"));
 
 let routes = {
     default: [
@@ -21,6 +22,10 @@ let routes = {
         {
             path: ResourcePath.SHOP,
             element: <Shop />,
+        },
+        {
+            path:ResourcePath.SHOP + "/:id",
+            element:<Product />,
         },
         {
             path: ResourcePath.CONTACT_US,

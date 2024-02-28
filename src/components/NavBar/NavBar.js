@@ -20,7 +20,7 @@ function NavBar() {
                 <Nav>
                     <Nav.Link href={ResourcePath.CART}><span
                         className="material-symbols-outlined">shopping_cart</span></Nav.Link>
-                        <p>{getCartItemsCount()}</p>
+                        <p className="cart-count">{getCartItemsCount()}</p>
                 </Nav>
                 <button className="btn btn-primary">Sign In</button>
             </Container>

@@ -9,6 +9,6 @@
     margin: 0 auto;
 }
 
-p{
-    color:aliceblue;
+.cart-count {
+    color:aliceblue !important;
 }
