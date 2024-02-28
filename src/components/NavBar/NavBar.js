@@ -21,8 +21,12 @@ function NavBar() {
                     <Nav.Link href={ResourcePath.CART}><span
                         className="material-symbols-outlined">shopping_cart</span></Nav.Link>
                         <p className="cart-count">{getCartItemsCount()}</p>
+                    <Nav.Link href={ResourcePath.SiGN_IN_UP}>
+                        <button className="btn btn-primary">Sign In</button>
+                    </Nav.Link>
                 </Nav>
-                <button className="btn btn-primary">Sign In</button>
+
+
             </Container>
         </Navbar>);
 }

@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import './Eform.css';
+import './ProjectForm.css';
+import {ResourcePath} from "../../constants/ResourcePath";
 
-class Eform extends Component {
+class ContactForm extends Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +23,8 @@ class Eform extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://jsonplaceholder.typicode.com/posts', this.state)
+        // fake post request
+        axios.post(ResourcePath.GET_ALL_PRODUCTS, this.state)
             .then(response => {
                 console.log(response);
             })
@@ -66,4 +68,4 @@ class Eform extends Component {
 
 }
 
-export default Eform;
+export default ContactForm;

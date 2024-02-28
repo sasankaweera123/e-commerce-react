@@ -5,6 +5,7 @@ export const ResourcePath = {
     SHOP: "/e-commerce-react/shop",
     CONTACT_US: "/e-commerce-react/contact-us",
     CART: "/e-commerce-react/cart",
+    SiGN_IN_UP: "/e-commerce-react/sign-in-up",
 
     MAIN_BANNER: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-banner-design-template-790a7d218286a816f21007acb405f8b5_screen.jpg?ts=1624013808",
 

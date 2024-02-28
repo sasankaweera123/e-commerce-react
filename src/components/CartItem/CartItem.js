@@ -11,6 +11,9 @@ const CartItem = () => {
     const shipping = 5;
     const getTotal = () => {
         let total = Number(getCartTotal());
+        if(total <= 0){
+            return 0;
+        }
         total = total + (total * tax / 100) + shipping;
         return total.toFixed(2);
     }
@@ -61,8 +64,8 @@ const CartItem = () => {
                 <tbody>
                 <tr>
                     <td>{getCartTotal()}</td>
-                    <td>{tax}%</td>
-                    <td>{shipping}</td>
+                    {getCartTotal() <= 0 ? <td>0</td> : <td>{tax}%</td>}
+                    {getCartTotal() <= 0 ? <td>0</td> : <td>{shipping}</td>}
                     <td>{getTotal()}</td>
                 </tr>
                 </tbody>

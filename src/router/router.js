@@ -8,6 +8,7 @@ const Shop = lazy(() => import("../pages/ShopPage/ShopPage.js"));
 const ContactUs = lazy(() => import("../pages/ContactUsPage/ContactUsPage.js"));
 const Cart = lazy(() => import("../pages/CartPage/CartPage.js"));
 const Product = lazy(() => import("../pages/ProductPage/ProductPage.js"));
+const SignInUpPage = lazy(() => import("../pages/SignInUpPage/SignInUpPage.js"));
 
 let routes = {
     default: [
@@ -42,6 +43,10 @@ let routes = {
         {
             path:ResourcePath.NOT_FOUND,
             element:<NotFound />,
+        },
+        {
+            path:ResourcePath.SiGN_IN_UP,
+            element:<SignInUpPage />,
         },
         {
             path: '*',
