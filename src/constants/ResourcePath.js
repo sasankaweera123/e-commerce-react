@@ -1,10 +1,10 @@
 export const ResourcePath = {
 
-    HOME: "/home",
-    NOT_FOUND: "/404",
-    SHOP: "/shop",
-    CONTACT_US: "/contact-us",
-    CART: "/cart",
+    HOME: "/e-commerce-react/home",
+    NOT_FOUND: "/e-commerce-react/404",
+    SHOP: "/e-commerce-react/shop",
+    CONTACT_US: "/e-commerce-react/contact-us",
+    CART: "/e-commerce-react/cart",
 
     MAIN_BANNER: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-banner-design-template-790a7d218286a816f21007acb405f8b5_screen.jpg?ts=1624013808",
 

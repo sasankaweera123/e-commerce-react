@@ -16,6 +16,10 @@ let routes = {
             element:<Navigate to={ResourcePath.HOME} />,
         },
         {
+            path: "/e-commerce-react",
+            element:<Navigate to={ResourcePath.HOME} />,
+        },
+        {
             path: ResourcePath.HOME,
             element: <Home />,
         },
