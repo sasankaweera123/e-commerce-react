@@ -1,14 +1,17 @@
 import {lazy} from "react";
 import {ResourcePath} from "../constants/ResourcePath";
 import {Navigate} from "react-router-dom";
+import RequireAuth from "@auth-kit/react-router/RequireAuth";
+
 
 const NotFound = lazy(() => import("../pages/NotFoundPage.js"));
-const Home = lazy(() => import("../pages/HomePage/HomePage.js"));
-const Shop = lazy(() => import("../pages/ShopPage/ShopPage.js"));
-const ContactUs = lazy(() => import("../pages/ContactUsPage/ContactUsPage.js"));
-const Cart = lazy(() => import("../pages/CartPage/CartPage.js"));
-const Product = lazy(() => import("../pages/ProductPage/ProductPage.js"));
-const SignInUpPage = lazy(() => import("../pages/SignInUpPage/SignInUpPage.js"));
+const Home = lazy(() => import("../pages/customer/HomePage/HomePage.js"));
+const Shop = lazy(() => import("../pages/customer/ShopPage/ShopPage.js"));
+const ContactUs = lazy(() => import("../pages/customer/ContactUsPage/ContactUsPage.js"));
+const Cart = lazy(() => import("../pages/customer/CartPage/CartPage.js"));
+const Product = lazy(() => import("../pages/customer/ProductPage/ProductPage.js"));
+const SignInUpPage = lazy(() => import("../pages/customer/SignInUpPage/SignInUpPage.js"));
+const Profile = lazy(() => import("../pages/customer/ProfilePage/ProfilePage.js"));
 
 let routes = {
     default: [
@@ -38,7 +41,7 @@ let routes = {
         },
         {
             path: ResourcePath.CART,
-            element: <Cart />,
+            element: <RequireAuth fallbackPath={ResourcePath.SiGN_IN_UP}><Cart /></RequireAuth> ,
         },
         {
             path:ResourcePath.NOT_FOUND,
@@ -52,6 +55,10 @@ let routes = {
             path: '*',
             element: <NotFound />,
         },
+        {
+            path: ResourcePath.PROFILE,
+            element: <RequireAuth fallbackPath={ResourcePath.SiGN_IN_UP}><Profile /></RequireAuth>,
+        }
     ]
 
 };

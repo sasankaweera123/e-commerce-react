@@ -15,6 +15,8 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
 
     const [products, setProduct] = useState([]);
+    const [categories, setCategories] = useState([]); // [category1, category2, category3, ...
+    const [favouriteProducts, setFavouriteProducts] = useState([]);
 
     const [cartItems, setCartItems] = useState(() => {
         const storedCartItems = localStorage.getItem("cartItems");
@@ -30,6 +32,26 @@ const ShopContextProvider = (props) => {
             .then(res => {
                 console.log(res.data);
                 setProduct(res.data);
+            }).catch(err => {
+            console.log(err);
+        });
+    }, []);
+
+    useEffect(() => {
+        axios.get(ResourcePath.GET_FAVORITE_PRODUCTS)
+            .then(res => {
+                console.log(res.data);
+                setFavouriteProducts(res.data);
+            }).catch(err => {
+            console.log(err);
+        });
+    },[]);
+
+    useEffect(() => {
+        axios.get(ResourcePath.GET_ALL_CATEGORIES)
+            .then(res => {
+                console.log(res.data);
+                setCategories(res.data);
             }).catch(err => {
             console.log(err);
         });
@@ -66,7 +88,7 @@ const ShopContextProvider = (props) => {
         return total.toFixed(2);
     }
 
-    const contextValue = {products, cartItems, addToCart, removeFromCart, getCartItemsCount, getCartTotal};
+    const contextValue = {products, categories, favouriteProducts, cartItems, addToCart, removeFromCart, getCartItemsCount, getCartTotal};
 
     return (
         <ShopContext.Provider value={contextValue}>

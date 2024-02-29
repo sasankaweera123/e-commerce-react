@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
-import {ShopContext} from "../../context/ShopContext";
+import {ShopContext} from "../../../context/ShopContext";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {ResourcePath} from "../../constants/ResourcePath";
+import {ResourcePath} from "../../../constants/ResourcePath";
 import {useParams} from "react-router-dom";
 import "./ProductPage.css";
 

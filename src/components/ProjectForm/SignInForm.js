@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {ResourcePath} from "../../constants/ResourcePath";
-import { useNavigate } from "react-router-dom";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+
 const SignInForm = () => {
 
     const [user, setUser] = useState({
@@ -9,7 +10,16 @@ const SignInForm = () => {
         password: ''
     });
 
-    const navigate = useNavigate();
+    const signIn = useSignIn();
+
+    const showPassword = () => {
+        if(document.getElementById('loginPassword').type === 'password') {
+            document.getElementById('loginPassword').type = 'text';
+        }
+        else {
+            document.getElementById('loginPassword').type = 'password';
+        }
+    }
 
     const handleChange = (e) => {
         setUser({
@@ -20,18 +30,25 @@ const SignInForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(ResourcePath.GET_ALL_PRODUCTS, user)
+        axios.post(ResourcePath.LOGIN, user)
             .then(response => {
                 console.log(response);
+                signIn({
+                    auth: {
+                        token: response.data['access_token'],
+                        type: 'Bearer'
+                    },
+                    userState: {
+                        email: user.email
+                    }
+                });
                 // if(response.data['user']===true){}
-                navigate(ResourcePath.HOME);
+                window.location.href = ResourcePath.HOME;
             })
             .catch(error => {
                 console.log(error);
             });
         console.log(user);
-
-
     }
 
     return (
@@ -39,12 +56,13 @@ const SignInForm = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Sign In</h1>
                 <div className="form-field">
-                    <label htmlFor="email">Email</label>
-                    <input id="email" type="email" name="email" value={user.email} onChange={handleChange}/>
+                    <label htmlFor="loginEmail">Email</label>
+                    <input id="loginEmail" type="email" name="email" value={user.email} onChange={handleChange}/>
                 </div>
-                <div className="form-field">
-                    <label htmlFor="password">Password</label>
-                    <input id="password" type="password" name="password" value={user.password} onChange={handleChange}/>
+                <div className="form-field" >
+                    <label htmlFor="loginPassword">Password</label>
+                    <input id="loginPassword" type="password" name="password" value={user.password} onChange={handleChange}/>
+                    <button type="button" onClick={showPassword}>Show</button>
                 </div>
                 <button type="submit">Sign In</button>
             </form>

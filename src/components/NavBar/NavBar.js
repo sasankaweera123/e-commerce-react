@@ -1,12 +1,25 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
 import './NavBar.css';
 import {ResourcePath} from "../../constants/ResourcePath";
 import {ShopContext} from "../../context/ShopContext";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
+import useSignOut from "react-auth-kit/hooks/useSignOut";
 
 function NavBar() {
 
     const {getCartItemsCount} = useContext(ShopContext);
+    const auth = useAuthUser();
+    const signOut = useSignOut();
+
+    const handleSignIn = () => {
+        if (auth) {
+            signOut();
+        }
+        window.location.href = ResourcePath.SiGN_IN_UP;
+    }
+
+    console.log("auth", auth);
 
     return (
         <Navbar bg="dark" data-bs-theme="dark" collapseOnSelect fixed="top">
@@ -20,9 +33,11 @@ function NavBar() {
                 <Nav>
                     <Nav.Link href={ResourcePath.CART}><span
                         className="material-symbols-outlined">shopping_cart</span></Nav.Link>
-                        <p className="cart-count">{getCartItemsCount()}</p>
-                    <Nav.Link href={ResourcePath.SiGN_IN_UP}>
-                        <button className="btn btn-primary">Sign In</button>
+                    <p className="cart-count">{getCartItemsCount()}</p>
+                    <button className={`btn ${auth ? "btn-danger" : "btn-primary"}`}
+                            onClick={handleSignIn}>{auth ? "Sign Out" : "Sign In"}</button>
+                    <Nav.Link href={ResourcePath.PROFILE}>
+                        <p>{auth ? auth.email : "Guest"}</p>
                     </Nav.Link>
                 </Nav>
 
