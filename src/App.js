@@ -14,6 +14,8 @@ function App() {
         cookieSecure: window.location.protocol === 'https:'
     })
 
+
+
     return (
         <div className="App">
             <AuthProvider store={store}>

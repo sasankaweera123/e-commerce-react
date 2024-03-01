@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import axios from "axios";
 import {ResourcePath} from "../../constants/ResourcePath";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
+import {AdminContext} from "../../context/AdminContext";
 
 const SignInForm = () => {
+
+    const { loggedUserDetails } = useContext(AdminContext);
 
     const [user, setUser] = useState({
         email: '',
@@ -43,12 +46,26 @@ const SignInForm = () => {
                     }
                 });
                 // if(response.data['user']===true){}
-                window.location.href = ResourcePath.HOME;
+                // window.location.href = ResourcePath.HOME;
+
+                axios.get(ResourcePath.GET_USER, {headers: {Authorization: `Bearer ${response.data['access_token']}`}})
+                    .then(response => {
+                        console.log(response.data);
+                        loggedUserDetails(response.data);
+                        if(response.data.role === 'admin'){
+                            window.location.href = ResourcePath.ADMIN_HOME;
+                        }else{
+                            window.location.href = ResourcePath.HOME;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+
             })
             .catch(error => {
                 console.log(error);
             });
-        console.log(user);
     }
 
     return (

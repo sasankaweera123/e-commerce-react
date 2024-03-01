@@ -16,3 +16,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.admin-pages{
+    display:none;
+}

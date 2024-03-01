@@ -1,37 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import axios from "axios";
 import {ResourcePath} from "../../../constants/ResourcePath";
+import {AdminContext} from "../../../context/AdminContext";
 
 const ProfilePage = () => {
 
-    const authHeader = useAuthHeader();
+    const {loggedInUser} = useContext(AdminContext);
 
-    const [user, setUser] = useState({
-        avatar: '',
-        email: '',
-        name: '',
-        role: ''
-    });
-
-    useEffect(() => {
-        axios.get(ResourcePath.GET_USER, {headers: {Authorization: authHeader}})
-            .then(response => {
-                setUser(response.data);
-                console.log(response);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    },[authHeader])
 
     return (
         <div>
             <h1>Profile</h1>
-            <img src={user.avatar} alt="avatar" />
-            <p>Email: {user.email}</p>
-            <p>Name: {user.name}</p>
-            <p>Role: {user.role}</p>
+            <img src={loggedInUser.avatar} alt="avatar" />
+            <p>Email: {loggedInUser.email}</p>
+            <p>Name: {loggedInUser.name}</p>
+            <p>Role: {loggedInUser.role}</p>
         </div>
     );
 }
