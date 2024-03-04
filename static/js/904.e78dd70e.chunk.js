@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunke_commerce_react=self.webpackChunke_commerce_react||[]).push([[904],{904:(e,c,n)=>{n.r(c),n.d(c,{default:()=>t});n(43);var r=n(579);const s=function(){return(0,r.jsx)("div",{children:(0,r.jsx)("h1",{children:"404 Page Not Found"})})};n(702);const t=function(){return(0,r.jsx)("div",{className:"not-found",children:(0,r.jsx)(s,{})})}},702:()=>{}}]);
-//# sourceMappingURL=904.e78dd70e.chunk.js.map
