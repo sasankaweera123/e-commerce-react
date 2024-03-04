@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {AdminContext} from "../../../context/AdminContext";
-import {Badge, Modal, ModalBody, Table} from "react-bootstrap";
+import {Modal, ModalBody, Table} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import "./OrderCard.css";
 import {ResourcePath} from "../../../constants/ResourcePath";

@@ -1,8 +1,7 @@
-import {lazy, useContext} from "react";
+import {lazy} from "react";
 import {ResourcePath} from "../constants/ResourcePath";
 import {Navigate} from "react-router-dom";
 import RequireAuth from "@auth-kit/react-router/RequireAuth";
-import {AdminContext} from "../context/AdminContext";
 
 
 

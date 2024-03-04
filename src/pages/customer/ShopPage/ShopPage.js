@@ -33,17 +33,17 @@ const ShopPage = () =>{
                 />
                 <select value={selectedCategory} onChange={handleCategoryChange}>
                     <option value="">All</option>
-                    {categories.map((category, i) => {
-                        return (<option key={i} value={category}>
+                    {categories.map((category) => {
+                        return (<option key={category} value={category}>
                                 {category}
                             </option>);
                     })}
                 </select>
             </div>
             <div className="products">
-                {filteredProducts.map((product, i) => {
+                {filteredProducts.map((product) => {
                     return (<Product
-                            key={i}
+                            key={product.id}
                             id={product.id}
                             name={product.title}
                             image={product.image}

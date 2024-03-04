@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from "react";
+import {createContext, useCallback, useEffect, useMemo, useState} from "react";
 import axios from "axios";
 import {ResourcePath} from "../constants/ResourcePath";
 
@@ -53,11 +53,14 @@ const AdminContextProvider = (props) => {
         });
     }, []);
 
-    const loggedUserDetails = (user) => {
+    const loggedUserDetails = useCallback((user) => {
         localStorage.setItem("loggedInUser", JSON.stringify(user));
-    }
+    }, []);
 
-    const contextValue = {users, orders, productOrders,loggedInUser,loggedUserDetails,isAdmin};
+    const contextValue = useMemo(() => {
+        return {users, orders, productOrders,loggedInUser,loggedUserDetails,isAdmin};
+    }, [users, orders, productOrders,loggedInUser,loggedUserDetails,isAdmin]);
+
 
     return (
         <AdminContext.Provider value={contextValue}>

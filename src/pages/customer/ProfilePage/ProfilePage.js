@@ -1,7 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
-import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
-import axios from "axios";
-import {ResourcePath} from "../../../constants/ResourcePath";
+import React, {useContext} from "react";
 import {AdminContext} from "../../../context/AdminContext";
 
 const ProfilePage = () => {

@@ -1,4 +1,4 @@
-import {createContext, useState, useEffect} from "react";
+import {createContext, useState, useEffect, useMemo, useCallback} from "react";
 import axios from "axios";
 import {ResourcePath} from "../constants/ResourcePath";
 
@@ -61,21 +61,21 @@ const ShopContextProvider = (props) => {
         setCartItems(prevCartItems => ({...prevCartItems, [id]: prevCartItems[id] + 1}));
     }
 
-    const removeFromCart = (id) => {
+    const removeFromCart = useCallback((id) => {
         if (cartItems[id] > 0) {
             setCartItems(prevCartItems => ({...prevCartItems, [id]: prevCartItems[id] - 1}));
         }
-    }
+    }, [cartItems]);
 
-    const getCartItemsCount = () => {
+    const getCartItemsCount = useCallback(() => {
         let count = 0;
         for (const id in cartItems) {
             count += cartItems[id];
         }
         return count;
-    }
+    }, [cartItems]);
 
-    const getCartTotal = () => {
+    const getCartTotal = useCallback(() => {
         let total = 0;
         for (const id in cartItems) {
             if (cartItems[id] > 0) {
@@ -86,9 +86,21 @@ const ShopContextProvider = (props) => {
             }
         }
         return total.toFixed(2);
-    }
+    }, [cartItems, products]);
 
-    const contextValue = {products, categories, favouriteProducts, cartItems, addToCart, removeFromCart, getCartItemsCount, getCartTotal};
+
+    const contextValue = useMemo(() => {
+        return {
+            products,
+            categories,
+            favouriteProducts,
+            cartItems,
+            addToCart,
+            removeFromCart,
+            getCartItemsCount,
+            getCartTotal
+        }
+    }, [products, categories, favouriteProducts, cartItems, removeFromCart, getCartItemsCount, getCartTotal]);
 
     return (
         <ShopContext.Provider value={contextValue}>

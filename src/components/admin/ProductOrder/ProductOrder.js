@@ -98,9 +98,9 @@ const AdminProducts = () => {
                                 <td>{formatOrderDate(e.date)}</td>
                                 <td>
                                     <select onChange={handleChange}>
-                                        {orderStatus.map((status, index) => {
+                                        {orderStatus.map((status) => {
                                             return (
-                                                <option key={index} value={index}>{status}</option>
+                                                <option key={status} value={status}>{status}</option>
                                             );
                                         })}
                                     </select>

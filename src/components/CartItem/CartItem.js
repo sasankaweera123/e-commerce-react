@@ -11,11 +11,10 @@ const CartItem = () => {
     const shipping = 5;
     const getTotal = () => {
         let total = Number(getCartTotal());
-        if(total <= 0){
+        if (total <= 0) {
             return 0;
         }
-        total = total + (total * tax / 100) + shipping;
-        return total.toFixed(2);
+        return +(total + (total * tax / 100) + shipping).toFixed(2);
     }
 
     return (

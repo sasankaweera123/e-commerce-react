@@ -1,10 +1,9 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import {ResourcePath} from "../../../constants/ResourcePath";
 import "../../pages.css";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import {ShopContext} from "../../../context/ShopContext";
 import Product from "../../../components/Product/Product";
-import axios from "axios";
 
 const HomePage = () => {
 
@@ -21,8 +20,8 @@ const HomePage = () => {
                 <div className="favourite-products">
                     <h2>Favourite Products</h2>
                     <div className="products">
-                        {favouriteProducts.map((product, i) => {
-                            return <Product key={i} id={product.id} name={product.title} image={product.image}
+                        {favouriteProducts.map((product) => {
+                            return <Product key={product.id} id={product.id} name={product.title} image={product.image}
                                             price={product.price}></Product>
                         })}
                     </div>

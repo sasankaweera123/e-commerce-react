@@ -13,15 +13,14 @@ export default function AppRouter() {
 
     function getAppNameByPath(path) {
         for (let key in routes) {
-            for (let i = 0; i < routes[key].length; i++) {
-                if (routes[key][i].path === path) {
-                    return key;
-                }
+            if (routes[key].some(route => route.path === path)) {
+                return key;
             }
         }
         // Return 'default' app  if the path is not found
         return 'default';
     }
+
     useEffect(() => {
         if (location.pathname === '/') {
             const path = getAppNameByPath(location.pathname);

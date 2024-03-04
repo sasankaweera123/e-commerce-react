@@ -45,8 +45,6 @@ const SignInForm = () => {
                         email: user.email
                     }
                 });
-                // if(response.data['user']===true){}
-                // window.location.href = ResourcePath.HOME;
 
                 axios.get(ResourcePath.GET_USER, {headers: {Authorization: `Bearer ${response.data['access_token']}`}})
                     .then(response => {
