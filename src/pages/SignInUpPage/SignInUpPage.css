@@ -1,0 +1,7 @@
+.sign-in-up-page{
+    display: flex;
+    justify-content: space-around;
+}
+.hidden-sign-in{
+    display: none;
+}

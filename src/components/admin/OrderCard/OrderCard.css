@@ -1,0 +1,15 @@
+.cart-item img{
+    width: 5rem;
+    max-height: 6rem;
+    margin: 2rem;
+}
+
+.action-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+Button{
+    margin: 1rem;
+}

@@ -1,4 +1,4 @@
-import {createContext, useState, useEffect} from "react";
+import {createContext, useState, useEffect, useMemo, useCallback} from "react";
 import axios from "axios";
 import {ResourcePath} from "../constants/ResourcePath";
 
@@ -15,6 +15,8 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
 
     const [products, setProduct] = useState([]);
+    const [categories, setCategories] = useState([]); // [category1, category2, category3, ...
+    const [favouriteProducts, setFavouriteProducts] = useState([]);
 
     const [cartItems, setCartItems] = useState(() => {
         const storedCartItems = localStorage.getItem("cartItems");
@@ -35,25 +37,45 @@ const ShopContextProvider = (props) => {
         });
     }, []);
 
+    useEffect(() => {
+        axios.get(ResourcePath.GET_FAVORITE_PRODUCTS)
+            .then(res => {
+                console.log(res.data);
+                setFavouriteProducts(res.data);
+            }).catch(err => {
+            console.log(err);
+        });
+    },[]);
+
+    useEffect(() => {
+        axios.get(ResourcePath.GET_ALL_CATEGORIES)
+            .then(res => {
+                console.log(res.data);
+                setCategories(res.data);
+            }).catch(err => {
+            console.log(err);
+        });
+    }, []);
+
     const addToCart = (id) => {
         setCartItems(prevCartItems => ({...prevCartItems, [id]: prevCartItems[id] + 1}));
     }
 
-    const removeFromCart = (id) => {
+    const removeFromCart = useCallback((id) => {
         if (cartItems[id] > 0) {
             setCartItems(prevCartItems => ({...prevCartItems, [id]: prevCartItems[id] - 1}));
         }
-    }
+    }, [cartItems]);
 
-    const getCartItemsCount = () => {
+    const getCartItemsCount = useCallback(() => {
         let count = 0;
         for (const id in cartItems) {
             count += cartItems[id];
         }
         return count;
-    }
+    }, [cartItems]);
 
-    const getCartTotal = () => {
+    const getCartTotal = useCallback(() => {
         let total = 0;
         for (const id in cartItems) {
             if (cartItems[id] > 0) {
@@ -64,9 +86,21 @@ const ShopContextProvider = (props) => {
             }
         }
         return total.toFixed(2);
-    }
+    }, [cartItems, products]);
 
-    const contextValue = {products, cartItems, addToCart, removeFromCart, getCartItemsCount, getCartTotal};
+
+    const contextValue = useMemo(() => {
+        return {
+            products,
+            categories,
+            favouriteProducts,
+            cartItems,
+            addToCart,
+            removeFromCart,
+            getCartItemsCount,
+            getCartTotal
+        }
+    }, [products, categories, favouriteProducts, cartItems, removeFromCart, getCartItemsCount, getCartTotal]);
 
     return (
         <ShopContext.Provider value={contextValue}>

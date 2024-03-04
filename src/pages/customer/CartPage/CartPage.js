@@ -1,6 +1,5 @@
 import React from "react";
-import CartItem from "../../components/CartItem/CartItem";
-import "./CartPage.css";
+import CartItem from "../../../components/CartItem/CartItem";
 
 function CartPage() {
     return (

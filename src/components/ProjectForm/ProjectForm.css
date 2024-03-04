@@ -1,0 +1,17 @@
+.contact-us-form{
+    height: 70vh;
+    width: 60%;
+}
+
+.form-field{
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-field label{
+    width: 20%;
+    text-align: right;
+    margin-right: 3rem;
+}
