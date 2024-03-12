@@ -29,22 +29,29 @@ function NavBar() {
     return (
         <Navbar bg="dark" data-bs-theme="dark" collapseOnSelect fixed="top">
             <Container>
-                <Navbar.Brand href={!isAdmin() ? ResourcePath.HOME:ResourcePath.ADMIN_HOME}>e-commerce</Navbar.Brand>
+                <Navbar.Brand href={!isAdmin() ? ResourcePath.HOME : ResourcePath.ADMIN_HOME}>e-commerce</Navbar.Brand>
                 <Nav className="me-auto nav-items">
-                    <Nav.Link href={!isAdmin() ? ResourcePath.HOME:ResourcePath.ADMIN_HOME}>Home</Nav.Link>
-                    <Nav.Link href={!isAdmin()?ResourcePath.SHOP:ResourcePath.ADMIN_PRODUCTS}>Shop</Nav.Link>
-                    <Nav.Link href={!isAdmin()?ResourcePath.CONTACT_US:ResourcePath.ADMIN_USERS}>Contact Us</Nav.Link>
+                    <Nav.Link href={!isAdmin() ? ResourcePath.HOME : ResourcePath.ADMIN_HOME}>Home</Nav.Link>
+                    <Nav.Link href={!isAdmin() ? ResourcePath.SHOP : ResourcePath.ADMIN_PRODUCTS}>Shop</Nav.Link>
+                    <Nav.Link href={!isAdmin() ? ResourcePath.CONTACT_US : ResourcePath.ADMIN_USERS}>Contact
+                        Us</Nav.Link>
                 </Nav>
-                <Nav>
-                    <Nav.Link href={ResourcePath.CART}><span
-                        className="material-symbols-outlined">shopping_cart</span></Nav.Link>
-                    <p className="cart-count">{getCartItemsCount()}</p>
+
+                <div className="functioning-system">
+                    <div className="chart-system">
+                        <Nav.Link href={ResourcePath.CART}>
+                            <span className="material-symbols-outlined">shopping_cart</span>
+                        </Nav.Link>
+                        <p className="cart-count">{getCartItemsCount()}</p>
+                    </div>
                     <button className={`btn ${auth ? "btn-danger" : "btn-primary"}`}
                             onClick={handleSignIn}>{auth ? "Sign Out" : "Sign In"}</button>
-                    <Nav.Link href={ResourcePath.PROFILE}>
-                        <p>{auth ? auth.email : "Guest"}</p>
-                    </Nav.Link>
-                </Nav>
+                    <div className="user-profile">
+                        <Nav.Link href={ResourcePath.PROFILE}>
+                            <p>{auth ? auth.email : "Guest"}</p>
+                        </Nav.Link>
+                    </div>
+                </div>
 
 
             </Container>

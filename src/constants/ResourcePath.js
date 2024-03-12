@@ -12,7 +12,8 @@ export const ResourcePath = {
     ADMIN_USERS: "/e-commerce-react/admin/users",
     ADMIN_PRODUCTS: "/e-commerce-react/admin/products",
 
-    MAIN_BANNER: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-banner-design-template-790a7d218286a816f21007acb405f8b5_screen.jpg?ts=1624013808",
+    MAIN_BANNER: "https://img.freepik.com/premium-photo/black-friday-sale-banner-concept-design-shopping-bag-black-background-with-copy-space-3d-render_46250-3239.jpg",
+    MAIN_BANNER_PHONE: "https://img.freepik.com/free-vector/abstract-black-luxury-background-with-abstracts_361591-4172.jpg",
 
     GET_ALL_PRODUCTS: "https://fakestoreapi.com/products",
     GET_PRODUCT_BY_ID: "https://fakestoreapi.com/products/",
