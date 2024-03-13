@@ -44,25 +44,31 @@ class ContactForm extends Component {
         const {name, email, message} = this.state;
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit} className="contact-us-form">
-                    <div className="form-field">
-                        <label htmlFor="name">Name</label>
-                        <input id="name" type="text" name="name" value={name} onChange={this.handleChange}/>
-                    </div>
-                    <div className="form-field">
-                        <label htmlFor="email">Email</label>
-                        <input id="email" type="email" name="email" value={email} onChange={this.handleChange}/>
-                    </div>
-                    <div className="form-field">
-                        <label htmlFor="message">Message</label>
-                        <textarea id="message" name="message" value={message} onChange={this.handleChange}/>
-                    </div>
-                    <div>
-                        <Button type="submit">Submit</Button>
-                    </div>
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit} className="contact-us-form">
+                <table>
+                    <tbody>
+                    <tr className="form-field">
+                        <td><label htmlFor="name">Name</label></td>
+                        <td><input id="name" type="text" name="name" value={name} onChange={this.handleChange}/>
+                        </td>
+                    </tr>
+                    <tr className="form-field">
+                        <td><label htmlFor="email">Email</label></td>
+                        <td><input id="email" type="email" name="email" value={email} onChange={this.handleChange}/>
+                        </td>
+                    </tr>
+                    <tr className="form-field">
+                        <td><label htmlFor="message">Message</label></td>
+                        <td><textarea id="message" name="message" value={message} onChange={this.handleChange}
+                                      rows="3"
+                                      cols="24"/></td>
+                    </tr>
+                    <tr>
+                        <td colSpan="2"><Button type="submit">Submit</Button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
         );
     }
 

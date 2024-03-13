@@ -1,3 +1,14 @@
+.cart-total-setup{
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.table-responsive{
+    width: 60%;
+}
+
 .cart-item p, .cart-items-topic p{
     color: black;
 }
@@ -11,7 +22,7 @@
     max-height: 6rem;
     margin: 2rem;
 }
-
-.cart-total{
-    width: 50%;
+.total-value p{
+    font-weight: bold;
+    color: #0074D9;
 }

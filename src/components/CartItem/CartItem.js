@@ -6,7 +6,7 @@ import {Table} from "react-bootstrap";
 
 const CartItem = () => {
 
-    const {products, cartItems, removeFromCart,getCartTotal} = useContext(ShopContext);
+    const {products, cartItems, removeFromCart, getCartTotal} = useContext(ShopContext);
     const tax = 18;
     const shipping = 5;
     const getTotal = () => {
@@ -18,7 +18,7 @@ const CartItem = () => {
     }
 
     return (
-        <div className="container">
+        <div className="cart-total-setup">
             <Table responsive>
                 <thead>
                 <tr>
@@ -40,7 +40,7 @@ const CartItem = () => {
                                     <td>{e.price}</td>
                                     <td>{cartItems[e.id]}</td>
                                     <td>{e.price * cartItems[e.id]}</td>
-                                    <td><Button onClick={() => removeFromCart(e.id)}>Remove</Button></td>
+                                    <td><Button variant="danger" onClick={() => removeFromCart(e.id)}>Remove</Button></td>
                                 </tr>
                             );
                         } else {
@@ -50,26 +50,27 @@ const CartItem = () => {
                 )}
                 </tbody>
             </Table>
-
-            <Table className="cart-total">
-                <thead>
-                <tr>
-                    <th>SubTotal</th>
-                    <th>Tax</th>
-                    <th>Shipping</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{getCartTotal()}</td>
-                    {getCartTotal() <= 0 ? <td>0</td> : <td>{tax}%</td>}
-                    {getCartTotal() <= 0 ? <td>0</td> : <td>{shipping}</td>}
-                    <td>{getTotal()}</td>
-                </tr>
-                </tbody>
-            </Table>
-            <Button>Checkout</Button>
+            <div className="get-total-setup">
+                <Table className="cart-total">
+                    <thead>
+                    <tr>
+                        <th>SubTotal</th>
+                        <th>Tax</th>
+                        <th>Shipping</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{getCartTotal()}</td>
+                        {getCartTotal() <= 0 ? <td>0</td> : <td>{tax}%</td>}
+                        {getCartTotal() <= 0 ? <td>0</td> : <td>{shipping}</td>}
+                        <td className="total-value"><p>$ {getTotal()}</p></td>
+                    </tr>
+                    </tbody>
+                </Table>
+                <Button>Checkout</Button>
+            </div>
         </div>
     );
 }

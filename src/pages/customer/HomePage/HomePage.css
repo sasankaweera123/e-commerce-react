@@ -42,12 +42,15 @@
     .main-banner-phone{
         display: block;
         height: 100vh;
+        opacity: 0.2;
     }
 }
 
 @media (min-width: 769px) {
     .main-banner{
+        width: 100%;
         display: block;
+        mix-blend-mode:luminosity;
     }
     .welcome-text{
         margin: 1.5rem 0;

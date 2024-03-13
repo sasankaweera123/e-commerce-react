@@ -6,7 +6,6 @@ import Product from "../../../components/Product/Product";
 import Card from "react-bootstrap/Card";
 
 import "./HomePage.css";
-import {Carousel} from "react-bootstrap";
 
 
 const HomePage = () => {
@@ -14,9 +13,7 @@ const HomePage = () => {
     const auth = useAuthUser();
     const {favouriteProducts} = useContext(ShopContext);
 
-
     return (
-        <div>
             <div className="customer">
                 <Card className="bg-dark text-white">
                     <Card.Img src={ResourcePath.MAIN_BANNER} alt="Card image" className="main-banner"/>
@@ -41,7 +38,6 @@ const HomePage = () => {
                 <div className="admin">
                 </div>
             </div>
-        </div>
     );
 }
 

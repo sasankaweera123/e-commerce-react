@@ -5,7 +5,9 @@
     align-items: center;
 }
 
-
+.cart-item-tables{
+    width: 100%;
+}
 
 .admin-pages{
     display:none;
