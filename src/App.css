@@ -5,5 +5,8 @@
     background: #212529;
     color: #fff;
     font-family: 'Poppins', sans-serif;
+}
 
+.pages{
+    padding: 4rem 0;
 }

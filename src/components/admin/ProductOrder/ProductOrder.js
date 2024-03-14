@@ -5,6 +5,8 @@ import {Table} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import {ResourcePath} from "../../../constants/ResourcePath";
+import UpgradeOutlinedIcon from '@mui/icons-material/UpgradeOutlined';
+
 
 const AdminProducts = () => {
     const {products} = useContext(ShopContext);
@@ -57,7 +59,7 @@ const AdminProducts = () => {
     return (
         <div className="container">
             <div className="product-orders">
-                <Table striped bordered hover>
+                <Table striped bordered hover variant="dark">
                     <thead>
                     <tr>
                         <th>User Name</th>
@@ -65,7 +67,7 @@ const AdminProducts = () => {
                         <th>Product Quantity</th>
                         <th>Total Price</th>
                         <th>Order Date</th>
-                        <th>Order Status</th>
+                        <th colSpan="2">Order Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -104,8 +106,8 @@ const AdminProducts = () => {
                                             );
                                         })}
                                     </select>
-                                    <Button onClick={() => handleEdit(e.id)}>Update</Button>
                                 </td>
+                                <td><Button onClick={() => handleEdit(e.id)}><span><UpgradeOutlinedIcon></UpgradeOutlinedIcon></span>Update</Button></td>
                             </tr>
                         );
                     })}

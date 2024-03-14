@@ -1,11 +1,14 @@
 import React, {useContext, useState} from "react";
 import {AdminContext} from "../../../context/AdminContext";
-import Card from "react-bootstrap/Card";
 import {ResourcePath} from "../../../constants/ResourcePath";
 import "./UserCard.css";
 import Button from "react-bootstrap/Button";
 import {Modal} from "react-bootstrap";
 import axios from "axios";
+import Card from "react-bootstrap/Card";
+import {Avatar} from "@mui/material";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 const UserCard = () => {
 
@@ -22,7 +25,6 @@ const UserCard = () => {
 
     const handleChange = (e) => {
         setEditUser({
-            ...editUser,
             [e.target.name]: e.target.value
         });
     }
@@ -77,10 +79,11 @@ const UserCard = () => {
                     users.map((user) => {
                         return (
                             <div key={user.id} className={`user-${user.id}`} id={`user-${user.id}`}>
-                                <Card style={{width: '18rem'}}>
-                                    <Card.Img variant="top"
-                                              src={user.avatar ? user.avatar : ResourcePath.PLACEHOLDER_IMAGE}/>
-                                    <Card.Body>
+                                <Card style={{width: '30rem'}} className="avatar-card" bg="dark" text="white" border="secondary">
+                                    <Avatar alt={user.name}
+                                            src={user.avatar ? user.avatar : ResourcePath.PLACEHOLDER_IMAGE}
+                                            sx={{width: 150, height: 150}}/>
+                                    <div className="card-body">
                                         <Card.Title>{user.name}</Card.Title>
                                         <Card.Text>
                                             {user.email}
@@ -88,9 +91,13 @@ const UserCard = () => {
                                         <Card.Text>
                                             {user.role}
                                         </Card.Text>
-                                        <Button variant={"primary"} onClick={() => handleEdit(user.id)}>Edit</Button>
-                                        <Button variant={"danger"} onClick={() => handleRemove(user.id)}>Remove</Button>
-                                    </Card.Body>
+                                        <div className="button-group">
+                                            <Button variant={"primary"}
+                                                    onClick={() => handleEdit(user.id)}><span><EditOutlinedIcon></EditOutlinedIcon></span>Edit</Button>
+                                            <Button variant={"danger"}
+                                                    onClick={() => handleRemove(user.id)}><span><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></span>Remove</Button>
+                                        </div>
+                                    </div>
                                 </Card>
                             </div>
                         )
@@ -98,22 +105,25 @@ const UserCard = () => {
                 }
             </div>
             <Modal show={showEdit} onHide={() => setShowEdit(false)}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton className="user-modal">
                     <Modal.Title>Edit User</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <form onSubmit={handleSubmit}>
+                <Modal.Body className="user-modal">
+                    <form onSubmit={handleSubmit} className="user-form">
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
-                            <input type="text" className="form-control" id="name" value={editUser.name} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="name" value={editUser.name}
+                                   onChange={handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="email" className="form-control" id="email" value={editUser.email} onChange={handleChange}/>
+                            <input type="email" className="form-control" id="email" value={editUser.email}
+                                   onChange={handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="role">Role</label>
-                            <input type="text" className="form-control" id="role" value={editUser.role} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="role" value={editUser.role}
+                                   onChange={handleChange}/>
                         </div>
                         <Button variant="primary" type="submit">
                             Submit

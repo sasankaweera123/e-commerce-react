@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import "./OrderCard.css";
 import {ResourcePath} from "../../../constants/ResourcePath";
 import axios from "axios";
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 const OrderCard = () => {
 
@@ -73,7 +75,7 @@ const OrderCard = () => {
 
     return (
         <div>
-            <Table responsive className="product-table container">
+            <Table responsive variant="dark" className="product-table container">
                 <thead>
                 <tr>
                     <th>Product</th>
@@ -95,8 +97,8 @@ const OrderCard = () => {
                                 <td>{e.price}</td>
                                 <td>
                                     <div className="action-buttons">
-                                        <Button onClick={() => handelEdit(e.id)} variant="info">Edit</Button>
-                                        <Button variant="warning" onClick={() => handelRemove(e.id)}>Remove</Button>
+                                        <Button variant="primary" onClick={() => handelEdit(e.id)}><span><EditOutlinedIcon></EditOutlinedIcon></span>Edit</Button>
+                                        <Button variant="danger" onClick={() => handelRemove(e.id)}><span><DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon></span>Remove</Button>
                                     </div>
 
                                 </td>
@@ -110,12 +112,12 @@ const OrderCard = () => {
                 size="lg"
                 show={show}
                 onHide={() => setShow(false)}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton className="admin-user-modal">
                     <Modal.Title>Edit Product</Modal.Title>
                 </Modal.Header>
-                <ModalBody>
+                <ModalBody className="admin-user-modal">
                     <div className="container">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="admin-user-form">
                             <div className="form-field">
                                 <label htmlFor="title">Title</label>
                                 <input id="title" type="text" name="title" value={editProduct.title}
@@ -141,8 +143,10 @@ const OrderCard = () => {
                                 <input id="image" type="file" name="image" value={editProduct.image}
                                        onChange={handleChange}/>
                             </div>
-                            <Button type="submit">Save</Button>
-                            <Button onClick={() => setShow(false)}>Cancel</Button>
+                            <div className="form-field button-group">
+                                <Button type="submit">Save</Button>
+                                <Button variant="danger" onClick={() => setShow(false)}>Cancel</Button>
+                            </div>
                         </form>
                     </div>
                 </ModalBody>

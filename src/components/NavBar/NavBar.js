@@ -6,6 +6,7 @@ import {ShopContext} from "../../context/ShopContext";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import {AdminContext} from "../../context/AdminContext";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 function NavBar() {
 
@@ -27,31 +28,34 @@ function NavBar() {
     }
 
     return (
-        <Navbar bg="dark" data-bs-theme="dark" collapseOnSelect fixed="top">
+        <Navbar collapseOnSelect bg="dark" data-bs-theme="dark" fixed="top">
             <Container>
                 <Navbar.Brand href={!isAdmin() ? ResourcePath.HOME : ResourcePath.ADMIN_HOME}>e-commerce</Navbar.Brand>
-                <Nav className="me-auto nav-items">
-                    <Nav.Link href={!isAdmin() ? ResourcePath.HOME : ResourcePath.ADMIN_HOME}>Home</Nav.Link>
-                    <Nav.Link href={!isAdmin() ? ResourcePath.SHOP : ResourcePath.ADMIN_PRODUCTS}>Shop</Nav.Link>
-                    <Nav.Link href={!isAdmin() ? ResourcePath.CONTACT_US : ResourcePath.ADMIN_USERS}>Contact
-                        Us</Nav.Link>
-                </Nav>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto nav-items">
+                        <Nav.Link href={!isAdmin() ? ResourcePath.HOME : ResourcePath.ADMIN_HOME}>Home</Nav.Link>
+                        <Nav.Link href={!isAdmin() ? ResourcePath.SHOP : ResourcePath.ADMIN_PRODUCTS}>Shop</Nav.Link>
+                        <Nav.Link href={!isAdmin() ? ResourcePath.CONTACT_US : ResourcePath.ADMIN_USERS}>Contact
+                            Us</Nav.Link>
+                    </Nav>
 
-                <div className="functioning-system">
-                    <div className="chart-system">
-                        <Nav.Link href={ResourcePath.CART}>
-                            <span className="material-symbols-outlined">shopping_cart</span>
-                        </Nav.Link>
-                        <p className="cart-count">{getCartItemsCount()}</p>
+                    <div className="functioning-system">
+                        {!isAdmin() ? <div className="chart-system">
+                            <Nav.Link href={ResourcePath.CART}>
+                                <ShoppingCartOutlinedIcon className="cart-icon"/>
+                            </Nav.Link>
+                            <p className="cart-count">{getCartItemsCount()}</p>
+                        </div> : null}
+                        <button className={`btn ${auth ? "btn-danger" : "btn-primary"}`}
+                                onClick={handleSignIn}>{auth ? "Sign Out" : "Sign In"}</button>
+                        <div className="user-profile">
+                            <Nav.Link href={ResourcePath.PROFILE}>
+                                <p>{auth ? auth.email : "Guest"}</p>
+                            </Nav.Link>
+                        </div>
                     </div>
-                    <button className={`btn ${auth ? "btn-danger" : "btn-primary"}`}
-                            onClick={handleSignIn}>{auth ? "Sign Out" : "Sign In"}</button>
-                    <div className="user-profile">
-                        <Nav.Link href={ResourcePath.PROFILE}>
-                            <p>{auth ? auth.email : "Guest"}</p>
-                        </Nav.Link>
-                    </div>
-                </div>
+                </Navbar.Collapse>
 
 
             </Container>

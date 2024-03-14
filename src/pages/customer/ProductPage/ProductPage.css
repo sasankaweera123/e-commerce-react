@@ -13,11 +13,11 @@
     color: black;
 }
 
-span{
+.view-products span{
     color: #0074D9;
 }
 
-img{
+.view-products img{
     width: 10rem;
     max-height: 12rem;
     margin: 2rem;
@@ -29,4 +29,8 @@ img{
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+}
+
+button .add-to-cart-icon{
+    color: white;
 }

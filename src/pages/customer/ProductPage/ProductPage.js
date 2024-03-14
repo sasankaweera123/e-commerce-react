@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import {ResourcePath} from "../../../constants/ResourcePath";
 import "./ProductPage.css";
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
 const ProductPage = (props) => {
     const {addToCart} = useContext(ShopContext);
@@ -11,7 +12,8 @@ const ProductPage = (props) => {
     const [product, setProduct] = useState({});
 
     const handleAddToCart = () => {
-        addToCart(productId)
+        addToCart(productId);
+        alert('Product added to cart');
     }
 
     useEffect(() => {
@@ -31,7 +33,7 @@ const ProductPage = (props) => {
             <p>{product.description}</p>
             <div className="product-footer">
                 <h5><span>$ </span>{product.price}</h5>
-                <Button onClick={handleAddToCart} variant="primary">Add to Cart</Button>
+                <Button onClick={handleAddToCart} variant="primary"><span className="add-to-cart-icon"><AddShoppingCartOutlinedIcon></AddShoppingCartOutlinedIcon></span> Add to Cart</Button>
             </div>
         </div>
     );
