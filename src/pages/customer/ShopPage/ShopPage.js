@@ -4,7 +4,7 @@ import {ShopContext} from "../../../context/ShopContext";
 
 import "./ShopPage.css";
 
-const ShopPage = () =>{
+const ShopPage = () => {
     const {products, categories} = useContext(ShopContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -23,7 +23,8 @@ const ShopPage = () =>{
         setSelectedCategory(e.target.value);
     };
 
-    return (<div className="shop-page">
+    return (
+        <div className="shop-page">
             <h1>Shop</h1>
             <div className="search-panel">
                 <input
@@ -36,20 +37,20 @@ const ShopPage = () =>{
                     <option value="">All</option>
                     {categories.map((category) => {
                         return (<option key={category} value={category}>
-                                {category}
-                            </option>);
+                            {category}
+                        </option>);
                     })}
                 </select>
             </div>
             <div className="products">
                 {filteredProducts.map((product) => {
                     return (<Product
-                            key={product.id}
-                            id={product.id}
-                            name={product.title}
-                            image={product.image}
-                            price={product.price}
-                        ></Product>);
+                        key={product.id}
+                        id={product.id}
+                        name={product.title}
+                        image={product.image}
+                        price={product.price}
+                    ></Product>);
                 })}
             </div>
         </div>);

@@ -77,7 +77,7 @@ const SignInForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <table>
+                <table className="project-form">
                     <tbody>
                     <tr>
                     <td colSpan="3"><h1>Sign In</h1></td>

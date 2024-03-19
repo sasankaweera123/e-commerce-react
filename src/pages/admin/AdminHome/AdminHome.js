@@ -60,9 +60,15 @@ const AdminHome = () => {
             <div className="container admin-user">
                 <h3>Admin Dashboard</h3>
             </div>
-            <Button variant="primary" onClick={() => setNewProductShow(true)}
-                    className="add-product"><span> <AddBoxOutlinedIcon></AddBoxOutlinedIcon> </span>Add
-                Product</Button>
+            <div className="admin-user-details">
+                <Button variant="primary" onClick={() => setNewProductShow(true)}
+                        className="add-product"><span> <AddBoxOutlinedIcon></AddBoxOutlinedIcon> </span>Add
+                    Product</Button>
+
+                <div className="order-cards container pt-5">
+                    <OrderCard/>
+                </div>
+            </div>
             <Modal show={newProductShow} onHide={() => setNewProductShow(false)}>
                 <Modal.Header closeButton className="admin-user-modal">
                     <Modal.Title>Add Product</Modal.Title>
@@ -101,9 +107,6 @@ const AdminHome = () => {
                     </form>
                 </Modal.Body>
             </Modal>
-            <div className="order-cards container pt-5">
-                <OrderCard/>
-            </div>
         </div>
     );
 }

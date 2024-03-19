@@ -70,7 +70,7 @@ const SignUpForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <table>
+                <table className="project-form">
                     <tbody>
                     <tr>
                         <td colSpan="3"><h2>Sign Up</h2></td>

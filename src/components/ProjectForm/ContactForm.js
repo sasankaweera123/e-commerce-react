@@ -41,7 +41,7 @@ const ContactForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit} className="contact-us-form">
-                <table>
+                <table className="project-form">
                     <tbody>
                     <tr className="form-field">
                         <td><label htmlFor="name">Name</label></td>

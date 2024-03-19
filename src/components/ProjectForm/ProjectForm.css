@@ -7,7 +7,7 @@ table{
     width: 100%;
 }
 
-th, td{
+.project-form th, .project-form td{
     padding: 1rem;
     text-align: center;
 }
