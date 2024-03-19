@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunke_commerce_react=self.webpackChunke_commerce_react||[]).push([[619],{7619:(e,r,s)=>{s.r(r),s.d(r,{default:()=>t});var a=s(5043),c=s(7420),l=s(579);const t=()=>{const{loggedInUser:e}=(0,a.useContext)(c.t);return(0,l.jsxs)("div",{children:[(0,l.jsx)("h1",{children:"Profile"}),(0,l.jsx)("img",{src:e.avatar,alt:"avatar"}),(0,l.jsxs)("p",{children:["Email: ",e.email]}),(0,l.jsxs)("p",{children:["Name: ",e.name]}),(0,l.jsxs)("p",{children:["Role: ",e.role]})]})}}}]);
-//# sourceMappingURL=619.6e77ad69.chunk.js.map
