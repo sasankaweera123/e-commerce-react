@@ -1,0 +1,9 @@
+.map-location{
+    width: 50rem;
+    border-radius: 1rem;
+}
+
+.leaflet-container{
+    width: 100%;
+    height: 80%;
+}
