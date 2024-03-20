@@ -5,16 +5,9 @@
     align-items: center;
 }
 
-.main-banner{
-    margin-top: 3rem;
+.cart-item-tables{
+    margin-top: 5rem;
     width: 100%;
-    overflow: hidden;
-}
-
-.products{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .admin-pages{

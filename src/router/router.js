@@ -10,7 +10,6 @@ const Home = lazy(() => import("../pages/customer/HomePage/HomePage.js"));
 const Shop = lazy(() => import("../pages/customer/ShopPage/ShopPage.js"));
 const ContactUs = lazy(() => import("../pages/customer/ContactUsPage/ContactUsPage.js"));
 const Cart = lazy(() => import("../pages/customer/CartPage/CartPage.js"));
-const Product = lazy(() => import("../pages/customer/ProductPage/ProductPage.js"));
 const SignInUpPage = lazy(() => import("../pages/SignInUpPage/SignInUpPage.js"));
 const Profile = lazy(() => import("../pages/customer/ProfilePage/ProfilePage.js"));
 
@@ -40,10 +39,6 @@ let routes = {
         {
             path: ResourcePath.SHOP,
             element: <Shop />,
-        },
-        {
-            path:ResourcePath.SHOP + "/:id",
-            element:<Product />,
         },
         {
             path: ResourcePath.CONTACT_US,

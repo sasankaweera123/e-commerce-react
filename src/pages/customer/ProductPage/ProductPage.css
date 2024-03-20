@@ -1,9 +1,36 @@
+.view-products{
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .view-products p{
+    font-size: 0.8rem;
+    text-transform: capitalize;
     color: black;
 }
 
-img{
+.view-products span{
+    color: #0074D9;
+}
+
+.view-products img{
     width: 10rem;
     max-height: 12rem;
     margin: 2rem;
+}
+
+.product-footer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button .add-to-cart-icon{
+    color: white;
 }

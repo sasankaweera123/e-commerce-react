@@ -13,3 +13,8 @@
 Button{
     margin: 1rem;
 }
+
+.table-responsive{
+    width: 100% !important;
+    margin: 2rem 0;
+}

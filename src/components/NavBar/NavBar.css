@@ -1,14 +1,25 @@
-.nav-items{
+.nav-items {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: 35%;
     padding: 0 20px;
     height: 100%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
+.functioning-system {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+.chart-system{
+    display: flex;
+}
+
 .cart-count {
-    color:aliceblue !important;
+    color: #0074D9 !important;
 }

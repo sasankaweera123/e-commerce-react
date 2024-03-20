@@ -8,12 +8,11 @@ import createStore from 'react-auth-kit/createStore';
 
 function App() {
     const store = createStore({
-        authName:'_auth',
-        authType:'cookie',
+        authName: '_auth',
+        authType: 'cookie',
         cookieDomain: window.location.hostname,
         cookieSecure: window.location.protocol === 'https:'
     })
-
 
 
     return (
@@ -21,8 +20,9 @@ function App() {
             <AuthProvider store={store}>
                 <BrowserRouter>
                     <NavBar/>
-                    <br></br><br></br><br></br>
-                    <AppRouter/>
+                    <div className="pages">
+                        <AppRouter/>
+                    </div>
                     <Footer/>
                 </BrowserRouter>
             </AuthProvider>

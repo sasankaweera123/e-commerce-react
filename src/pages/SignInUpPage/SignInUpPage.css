@@ -1,7 +1,18 @@
-.sign-in-up-page{
+.sign-in-up-page {
     display: flex;
     justify-content: space-around;
 }
-.hidden-sign-in{
+
+.hidden-sign-in {
     display: none;
+}
+
+.sign-up, .sign-in {
+    width: 45%;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.vr-line {
+    width: 8%;
 }

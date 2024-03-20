@@ -1,9 +1,10 @@
 import React, {useContext, useState} from "react";
 import Product from "../../../components/Product/Product";
-import "../../pages.css";
 import {ShopContext} from "../../../context/ShopContext";
 
-const ShopPage = () =>{
+import "./ShopPage.css";
+
+const ShopPage = () => {
     const {products, categories} = useContext(ShopContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -22,9 +23,10 @@ const ShopPage = () =>{
         setSelectedCategory(e.target.value);
     };
 
-    return (<div>
+    return (
+        <div className="shop-page">
             <h1>Shop</h1>
-            <div className="search-pannel">
+            <div className="search-panel">
                 <input
                     type="text"
                     placeholder="Search"
@@ -35,20 +37,20 @@ const ShopPage = () =>{
                     <option value="">All</option>
                     {categories.map((category) => {
                         return (<option key={category} value={category}>
-                                {category}
-                            </option>);
+                            {category}
+                        </option>);
                     })}
                 </select>
             </div>
             <div className="products">
                 {filteredProducts.map((product) => {
                     return (<Product
-                            key={product.id}
-                            id={product.id}
-                            name={product.title}
-                            image={product.image}
-                            price={product.price}
-                        ></Product>);
+                        key={product.id}
+                        id={product.id}
+                        name={product.title}
+                        image={product.image}
+                        price={product.price}
+                    ></Product>);
                 })}
             </div>
         </div>);

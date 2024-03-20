@@ -2,6 +2,11 @@ import React, {useState} from "react";
 import axios from "axios";
 import {ResourcePath} from "../../constants/ResourcePath";
 
+import "./ProjectForm.css";
+import Button from "react-bootstrap/Button";
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+
 const SignUpForm = () => {
 
     const [user, setUser] = useState({
@@ -9,6 +14,9 @@ const SignUpForm = () => {
         password: '',
         confirmPassword: ''
     });
+
+    const [isSignPasswordVisible, setIsSignPasswordVisible] = useState(false);
+    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
     const handleChange = (e) => {
         setUser({
@@ -19,17 +27,28 @@ const SignUpForm = () => {
 
     const showPassword = (inputId) => {
         const passwordInput = document.getElementById(inputId);
-        if(passwordInput.type === 'password') {
+        if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
-        }
-        else {
+            if (inputId === 'SignPassword') {
+                setIsSignPasswordVisible(true);
+            }
+            if (inputId === 'confirm-password') {
+                setIsConfirmPasswordVisible(true);
+            }
+        } else {
             passwordInput.type = 'password';
+            if (inputId === 'SignPassword') {
+                setIsSignPasswordVisible(false);
+            }
+            if (inputId === 'confirm-password') {
+                setIsConfirmPasswordVisible(false);
+            }
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(user.password !== user.confirmPassword){
+        if (user.password !== user.confirmPassword) {
             alert('Passwords do not match');
             return;
         }
@@ -51,23 +70,40 @@ const SignUpForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h1>Sign Up</h1>
-                <div className="form-field">
-                    <label htmlFor="Signemail">Email</label>
-                    <input id="Signemail" type="email" name="email" value={user.email} onChange={handleChange}/>
-                </div>
-                <div className="form-field">
-                    <label htmlFor="SignPassword">Password</label>
-                    <input id="SignPassword" type="password" name="password" value={user.password} onChange={handleChange}/>
-                    <button type="button" onClick={() => showPassword('SignPassword')}>Show</button>
-                </div>
-                <div className="form-field">
-                    <label htmlFor="confirm-password">Confirm Password</label>
-                    <input id="confirm-password" type="password" name="confirmPassword" value={user.confirmPassword}
-                           onChange={handleChange}/>
-                    <button type="button" onClick={() => showPassword('confirm-password')}>Show</button>
-                </div>
-                <button type="submit">Sign Up</button>
+                <table className="project-form">
+                    <tbody>
+                    <tr>
+                        <td colSpan="3"><h2>Sign Up</h2></td>
+                    </tr>
+                    <tr className="form-field">
+                        <td><label htmlFor="Signemail">Email</label></td>
+                        <td colSpan="2"><input id="Signemail" type="email" name="email" value={user.email}
+                                               onChange={handleChange} required/></td>
+                    </tr>
+                    <tr className="form-field">
+                        <td><label htmlFor="SignPassword">Password</label></td>
+                        <td><input id="SignPassword" type="password" name="password" value={user.password}
+                                   onChange={handleChange} required/></td>
+                        <td>
+                            <div onClick={() => showPassword('SignPassword')}>{isSignPasswordVisible ?
+                                <RemoveRedEyeOutlinedIcon/> : <VisibilityOffOutlinedIcon/>}</div>
+                        </td>
+                    </tr>
+                    <tr className="form-field">
+                        <td><label htmlFor="confirm-password">Confirm Password</label></td>
+                        <td><input id="confirm-password" type="password" name="confirmPassword"
+                                   value={user.confirmPassword}
+                                   onChange={handleChange} required/></td>
+                        <td>
+                            <div onClick={() => showPassword('confirm-password')}>{isConfirmPasswordVisible ?
+                                <RemoveRedEyeOutlinedIcon/> : <VisibilityOffOutlinedIcon/>}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colSpan="3"><Button type="submit">Sign Up</Button></td>
+                    </tr>
+                    </tbody>
+                </table>
             </form>
         </div>
     );

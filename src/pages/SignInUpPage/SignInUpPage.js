@@ -12,6 +12,7 @@ const SignInUpPage = () => {
             <div className={`sign-up`}>
                 <SignUpForm/>
             </div>
+            <div className="vr-line"></div>
             <div className={`sign-in`}>
                 <SignInForm/>
             </div>

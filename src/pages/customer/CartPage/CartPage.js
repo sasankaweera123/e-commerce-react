@@ -3,8 +3,7 @@ import CartItem from "../../../components/CartItem/CartItem";
 
 function CartPage() {
     return (
-        <div>
-            <h1>Cart</h1>
+        <div className="cart-item-tables">
             <CartItem></CartItem>
         </div>
     );
